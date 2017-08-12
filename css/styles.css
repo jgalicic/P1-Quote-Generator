@@ -79,12 +79,45 @@ body {
 
 @media (max-width: 420px) {
   .quote {
-    font-size: 2.5rem;
+    font-size: 1.2rem;
   }
   .quote:before, .quote:after {
-    font-size: 3rem;
+    font-size: 2rem;
+    line-height: .7;
+  }
+  .source {
+    font-size: .8rem;
+  }
+  #loadQuote {
+    bottom: 10px;
+    left: 50%;
+  }
+}
+
+@media (max-width: 732px) {
+  .quote {
+    font-size: 1.5rem;
+  }
+  .quote:before, .quote:after {
+    font-size: 1.8rem;
+    line-height: .7;
   }
   .source {
     font-size: 1rem;
   }
+  #loadQuote {
+    bottom: 20px;
+    left: 50%;
+  }
 }
+
+
+
+
+
+
+
+
+
+
+
