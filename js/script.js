@@ -69,14 +69,15 @@ var colors = ["#36b55c", "#4682b4", "#db533b", "#484538", "#561a53", "#8B4513", 
 	 		  "#378e6b", "#347038", "#445e2e", "#5a5e2e", "#5e3f2e", "#5b4c55", "#5b4040", "#3f435b"]
 
 
+//Shows a new quote automatically after set time
 
+var cycleTimer;
 
-//Shows a new quote automatically after 10 seconds.
-window.setInterval(myCallback, 10000);
-
-function myCallback() {
-   getRandomQuote();
+var startCycle = function() {
+	cycleTimer = setInterval(function(){getRandomQuote()}, 10000);
 }
+
+startCycle();
 
 var copy = quotes.slice(0);
 var tracker = quotes.length;
@@ -85,7 +86,7 @@ var tracker = quotes.length;
 function getRandomQuote() {
 
 
-		//Reset tracker & copy if tracker gets to 0
+	//Reset tracker & copy if tracker gets to 0
 	if (tracker < 1) {
 		tracker = quotes.length;
 		copy = quotes.slice(0);
@@ -109,7 +110,6 @@ function getRandomQuote() {
 			yearID.style.display = "inline";
 		}
 
-
 	currentQuote.textContent = currentItem.quote;
 	sourceID.textContent = currentItem.source;
 	citationID.textContent = currentItem.citation;
@@ -121,11 +121,14 @@ function getRandomQuote() {
 	tracker = tracker - 1;
 }
 
-
 //Shows a new quote when button is clicked
 document.getElementById('loadQuote').addEventListener("click", function() {
 	
 	getRandomQuote();
+	// Stop auto-cycle
+   	clearInterval(cycleTimer);
+   	// Restart auto-cycle
+	startCycle();
 
 });
 
